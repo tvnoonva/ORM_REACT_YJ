@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- 검색엔진 최적화(SEO Search Engine Optimization)를 위한 메타태그 정보들 description, keywords, title, author...  -->
+    <!-- description: title과 함게 가장 중요한 seo 메타태그: 웹페이지의 내용을 설명식으로 기술 -->
+    <meta name="description" content="비대면 실시간 웹채팅 솔루션을 제공합니다.">
+    <!-- keywords: 웹페이지의 내용을 주요 키워드로 나열 -->
+    <meta name="keywords" content="엠소프트웨어, msoftware, chatting, 채팅솔루션, 무료솔루션, 비대면, 실시간웹">
+    <!-- 콘텐츠 제공자 정보 표시 -->
+    <meta name="author" content="엠소프트웨어">
+
+    <!-- SNS OpenGraph Tag -Velog- -->
+    <meta name="og:site_name" content="엠소프트웨어">
+    <meta name="og:title" content="비대면 솔루션 전문기업 엠소프트웨어를 소개합니다.">
+    <meta name="og:description" content="엠소프트웨어는 웹채팅 화상통화 현업툴 인공지능 챗봇을 개발하여 고객사에...">
+    <meta name="og:type" content="website">
+    <meta name="og:url" content="링크클릭시 이동할 주소">
+    <meta name="og:image" content="sns에 공유될 대표이미지 경로">
+
+    <!-- 현재 웹페이지 밖에서 특정 리소스를 참조할때 사용함 -->
+    <link rel="stylesheet" href="./sample.css">
+
+    해당 웹페이지 태그들의 공통속성을 지정가능
+    <base target="_blank" href="/DAY1-HTML/img/">
+
+    <!-- head-style 태그 내에서 웹페이지 스타일을 공통 적용하는 방식을 임베디드 스타일 지정 방식이라 함 -->
+    <style>
+        /*문서내 모든 p태그 스타일지정
+        단, 인라인 스타일 적용이 우선시됨*/
+
+        p{
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <h1>이미지 태그 실습</h1>
+
+    <!-- 상대경로 표시 -->
+    <img src="16240_9455_4715.jpg" alt="코딩언어" style="width: 300px;height: 150px;">
+    <!-- 절대경로(도메인 포함) 표시 -->
+    <img src="https://www.snunews.com/news/photo/201609/16240_9455_4715.jpg" alt="코딩언어" style="width: 300px;height: 150px;">
+    <!-- 도메인 생략 -->
+    <img src="/DAY1-HTML/16240_9455_4715.jpg" alt="코딩언어" style="width: 300px;height: 150px;">
+
+    <!-- 특정 사이즈의 이미지가 필요할때 이용 -->
+    <img src="http://via.placeholder.com/250x150" />
+
+    <!-- 이미지가 없는 경우 대체 이미지 전송 -->
+    <img src="code1.jpg" alt="코딩언어"/>
+    <img src="code1.jpg" alt="chat" onerror="this.src='/DAY1-HTML/16240_9455_4715.jpg';this.setAttribute('alt','');"/>
+
+    <!-- 인라인 스타일 적용 -->
+    <p style="background-color: pink;">안녕하세요. 반갑습니다
+        모두연 자바스크립트 풀스택과정입니다.
+        반갑습니다. 
+    </p>
+
+    <a href="http://www.naver.com">네이버 이동하기</a>
+    <a href="index.html">메인페이지 이동하기</a>
+    <a href="http://daum.net" target="_blank">다음 이동하기</a>
+    
+    <!-- 같은 화면 내 특정 요소로 포커스 이동 -->
+    <a href="#" href="#article1">게시글1 이동하기</a>
+    <a href="#" href="#article2">게시글2 이동하기</a>
+    <a href="#" href="#article3">게시글3 이동하기</a>
+
+    <p id="article1">article1 안녕하세요. 반갑습니다. <br>모두연 자바스크립트 풀스택과정입니다.</p>
+    <p id="article2">article2 안녕하세요. 반갑습니다. 모두연 자바스크립트 풀스택과정입니다.</p>
+    <p id="article3">article3 안녕하세요. 반갑습니다. 모두연 자바스크립트 풀스택과정입니다.</p>
+
+</body>
+</html>
