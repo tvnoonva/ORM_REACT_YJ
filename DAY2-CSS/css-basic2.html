@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        @import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
+        body{
+            font-family: 'Black Han Sans', 'Times New Roman', Times, serif;
+            font-size: 10px;
+        }
+
+        h2{
+            font-family: 'Black Han Sans', 'Times New Roman', Times, serif;
+        }
+
+        div {
+            width: 22%;
+            float: left;
+            margin: 10px;
+            border: 1px solid black;
+        }
+
+        /* div태그내 모든 요소중 n번째 요소의 스타일 적용  */
+        div:nth-child(1)>h6 {
+            text-align: center;
+        }
+        div:nth-child(2)>h6 {
+            text-align: right;
+        }
+        div:nth-child(3)>h6 {
+            text-align: left;
+        }
+        div:nth-child(4)>h6 {
+            text-align: justify;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <h1>텍스트 정렬 처리하기</h1>
+    <div>
+        <p>center-중앙정렬</p>
+        <h6>----------------------------------------------------</h6>
+    </div>
+    <div>
+        <p>center-우측정렬</p>
+        <h6>----------------------------------------------------</h6>
+    </div>
+    <div>
+        <p>center-좌측정렬</p>
+        <h6>----------------------------------------------------</h6>
+    </div>
+    <div>
+        <p>center-양쪽정렬</p>
+        <h6>----------------------------------------------------</h6>
+    </div>
+
+    <h1>스타일 기본속성 - 글자텍스트 속성</h1>
+
+    <h2>텍스트 색상 지정하기</h2>
+    <h2 style="background-color: rgb(255,0,0);">rgb(255,0,0)방식 색상지정</h2>
+    <h2 style="background-color: red;">color 명칭기반 색상지정</h2>
+    <h2 style="background-color: #FF0000;">Hexadecimal 색상지정</h2>
+
+    <h2 style="color: rgb(255,0,0);">rgb(255,0,0)방식 색상지정</h2>
+    <h2 style="color: red;">color 명칭기반 색상지정</h2>
+    <h2 style="color: #FF0000;">Hexadecimal 색상지정</h2>
+
+    <hr>
+    <h1>텍스트 꾸미기 실습</h1>
+
+    <h1 style="text-decoration: overline;">Overline</h1>
+    <h1 style="text-decoration: line-through;">Line-Through</h1>
+    <h1 style="text-decoration: underline;">Under Line</h1>
+    <h1 style="text-decoration: initial;">initial</h1>
+    <h1 style="text-decoration: none;">sample</h1>
+
+    <hr>
+    <h1>글꼴 속성 처리하기</h1>
+    <h2>글꼴 적용</h2>
+
+    <hr>
+    <h1>글꼴 크기 지정하기</h1>
+    <p style="font-size: small;">글꼴 크기 테스트1</p>
+    <p style="font-size: 50px;">글꼴 크기 테스트2</p>
+    <p style="font-size: 150%;">글꼴 크기 테스트3</p>
+    <p style="font-size: 1.5em;">글꼴 크기 테스트4</p>
+
+    
+
+</body>
+
+</html>
