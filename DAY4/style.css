@@ -1,0 +1,45 @@
+.calculator {
+    max-width: 250px;
+    margin: 50px auto;
+    text-align: center;
+    box-shadow: 10px 10px 30px gray,
+                -10px 10px 30px gray
+}
+
+input[type="text"] {
+    width: 90.5%;
+    padding: 30px 10px 5px 10px;
+    text-align: right;
+    font-size: 40px;
+    background-color: rgb(76,76,76);
+    color: white;
+}
+
+.buttons {
+    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+}
+
+button {
+    height: 50px;
+    padding: 10px;
+    font-size: 20px;
+    background-color: rgb(214,214,214);
+    border: 1px solid rgb(178,178,178);
+    cursor: pointer; /*마우스 커서 모양 지정*/
+}
+
+.button_orange{
+    background-color: rgb(245,146,62);
+    color: white;
+}
+
+.double-width {
+    background-color: rgb(214,214,214);
+    grid-column: span 2;
+}
+
+button:hover {
+    background-color: white;
+}
