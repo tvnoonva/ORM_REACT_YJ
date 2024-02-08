@@ -18,7 +18,8 @@ input[type="text"] {
 .buttons {
     align-items: center;
     display: grid;
-    grid-template-columns: repeat(4, 25%);
+    /*grid 컨테이너를 통해 column, row 요소를 속성값으로 지정*/
+    grid-template-columns: repeat(4, 25%); /*4개의 열, 각 열이 25% 만큼 차지*/
 }
 
 button {

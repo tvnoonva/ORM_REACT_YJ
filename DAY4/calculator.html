@@ -11,8 +11,8 @@
         <input type="text" id="input">
         <div class="buttons">
             <button onclick="clearInput()">C</button>
-            <button onclick="">+/-</button>
-            <button onclick="appendOperator('%')">%</button>
+            <button onclick="changeSign()">+/-</button>
+            <button onclick="calculatePercent()">%</button>
             <button onclick="appendOperator('/')" class="button_orange">÷</button>
             <button onclick="appendNumber('7')">7</button>
             <button onclick="appendNumber('8')">8</button>
@@ -31,8 +31,6 @@
             <button onclick="calculate()" class="button_orange">=</button>
         </div>
     </div>
-
-    <button onclick="getLastNumber()">1111</button>
 
     <script src="script.js"></script>
 </body>
