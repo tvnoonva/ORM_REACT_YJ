@@ -61,6 +61,27 @@ a {
     color: #fff;
 }
 
+/* 메뉴바 레이아웃 스타일 정의 */
+.wrapper {}
+
+header{
+    margin: 100px auto;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    background-color: black;
+    color: white;
+    padding: 10px;
+}
+
+.left-area-menu{
+    float: left;
+    height: auto;
+    padding: 10px;
+    margin: auto;
+    background-color: aquamarine;
+}
+
+
 /* 목록 웹페이지 스타일 정의영역 */
 .board_list_wrap {}
 
