@@ -1,53 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="./css/index.css">
-</head>
+    <link rel="stylesheet" href="./css/index.css" />
+  </head>
 
-<body>
+  <body>
     <!-- 전체 게시글 등록화면 -->
     <div class="board_wrap">
-        <!-- 페이지 제목 영역 -->
-        <div class="board_title">
-            <strong>공지수정</strong>
-            <p>공지사항을 수정합니다.</p>
-        </div>
+      <!-- 페이지 제목 영역 -->
+      <div class="board_title">
+        <strong>공지수정</strong>
+        <p>공지사항을 수정합니다.</p>
+      </div>
 
-        <!-- 게시글 등록 화면 영역 -->
-        <div class="board_write_wrap">
-            <div class="board_write">
-                <div class="title">
-                    <dl>
-                        <dt>제목</dt>
-                        <dd><input type="text" placeholder="제목"></dd>
-                    </dl>
-                </div>
-                <div class="info">
-                    <dl>
-                        <dt>글쓴이</dt>
-                        <dd><input type="text" placeholder="글쓴이"></dd>
-                    </dl>
-                    <dl>
-                        <dt>비밀번호</dt>
-                        <dd><input type="password" placeholder="비밀번호"></dd>
-                    </dl>
-                </div>
-                <div class="cont">
-                    <textarea placeholder="내용 입력"></textarea>
-                </div>
-
-            </div>
-            <!-- 버튼 영역 -->
-            <div class="bt_wrap">
-                <a href="./view.html" class="on">등록</a>
-                <a href="./list.html">취소</a>
-            </div>
+      <!-- 게시글 등록 화면 영역 -->
+      <div class="board_write_wrap">
+        <div class="board_write">
+          <div class="title">
+            <dl>
+              <dt>제목</dt>
+              <dd><input type="text" id="title" placeholder="제목" /></dd>
+            </dl>
+          </div>
+          <div class="info">
+            <dl>
+              <dt>글쓴이</dt>
+              <dd><input type="text" id="writer" placeholder="글쓴이" /></dd>
+            </dl>
+            <dl>
+              <dt>비밀번호</dt>
+              <dd>
+                <input type="password" id="password" placeholder="비밀번호" />
+              </dd>
+            </dl>
+          </div>
+          <div class="cont">
+            <textarea placeholder="내용 입력" id="contents"></textarea>
+          </div>
         </div>
+        <!-- 버튼 영역 -->
+        <div class="bt_wrap">
+          <a href="#" class="on" onclick="fnArticleModify()">등록</a>
+          <a href="./list.html">취소</a>
+        </div>
+      </div>
     </div>
-</body>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
+    <script>
+      //현재 웹페이지의 주소에서 전달되는 쿼리스트링 키의 값을 추출하는 함수정의
+      function getQueryString(keyName) {
+        var results = new RegExp("[\?&]" + keyName + "=([^&#]*)").exec(
+          window.location.href
+        );
+        return results[1] || 0;
+      }
+
+      //수정페이지 이동처리 함수
+      function fnMoveModify() {
+        location.href = "./edit.html?aidx=" + articleIdx;
+      }
+
+      function fnArticleModify() {
+        if ($("#title").val() == "") {
+          alert("제목을 입력해주세요.");
+          $("#title").focus();
+          return false;
+        }
+
+        if ($("#writer").val() == "") {
+          alert("작성자명을 입력해주세요.");
+          $("#writer").focus();
+          return false;
+        }
+
+        if ($("#password").val() == "") {
+          alert("암호를 입력해주세요.");
+          $("#password").focus();
+          return false;
+        }
+
+        if ($("#contents").val() == "") {
+          alert("내용을 입력해주세요.");
+          $("#contents").focus();
+          return false;
+        }
+
+        var article = {
+          ArticleIDX: articleIdx,
+          BoardIDX: 0,
+          ArticlePWD: $("#password").val(),
+          ArticleTypeCode: 0,
+          Title: $("#title").val(),
+          Contents: $("#contents").val(),
+          ViewCount: 0,
+          IsDisplayTN: 1,
+          RegistUserID: $("#writer").val(),
+          RegistDate: "2023-03-13",
+        };
+
+        $.post("http://localhost:3000/api/article/update", article).done(
+          function (result) {
+            alert("수정완료");
+            location.href = "./list.html";
+          }
+        );
+      }
+
+      //URL에서 전달된 게시글 고유키값 조회하기
+      var articleIdx = getQueryString("aidx");
+
+      $(document).ready(function () {
+        $.get(
+          "http://localhost:3000/api/article?idx=" + articleIdx,
+          function (article) {
+            console.log("백엔드에서 조회한 단일게시글 데이터 출력: ", article);
+          }
+        );
+
+        $("#title").val(article.Title);
+        $("#writer").val(article.RegistUserID);
+        $("#password").val("");
+        $("#contents").html(article.Contents);
+      });
+    </script>
+  </body>
 </html>

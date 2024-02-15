@@ -1,62 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="./css/index.css">
-</head>
+    <link rel="stylesheet" href="./css/index.css" />
+  </head>
 
-<body>
+  <body>
     <div class="board_wrap">
-        <!-- 페이지 제목표시 영역 -->
-        <div class="board_title">
-            <strong>공지확인</strong>
-            <p>공지사항 내용을 확인합니다.</p>
+      <!-- 페이지 제목표시 영역 -->
+      <div class="board_title">
+        <strong>공지확인</strong>
+        <p>공지사항 내용을 확인합니다.</p>
+      </div>
+
+      <!-- 게시글 상세 영역 -->
+      <div class="board_view_wrap">
+        <!-- 게시글 세부내용 표시영역 -->
+        <div class="board_view">
+          <!-- 글제목 -->
+          <div class="title" id="title"></div>
+
+          <!-- 글 정보 -->
+          <div class="info">
+            <dl>
+              <dt>번호</dt>
+              <dd id="idx"></dd>
+            </dl>
+            <dl>
+              <dt>글쓴이</dt>
+              <dd id="writer"></dd>
+            </dl>
+            <dl>
+              <dt>작성일</dt>
+              <dd id="registdate"></dd>
+            </dl>
+            <dl>
+              <dt>조회수</dt>
+              <dd id="viewcount"></dd>
+            </dl>
+          </div>
+
+          <!-- 글 내용 -->
+          <div class="cont" id="contents"></div>
         </div>
 
-        <!-- 게시글 상세 영역 -->
-        <div class="board_view_wrap">
-            <!-- 게시글 세부내용 표시영역 -->
-            <div class="board_view">
-                <!-- 글제목 -->
-                <div class="title">게시글1</div>
-
-                <!-- 글 정보 -->
-                <div class="info">
-                    <dl>
-                        <dt>번호</dt>
-                        <dd>1</dd>
-                    </dl>
-                    <dl>
-                        <dt>글쓴이</dt>
-                        <dd>사용자1</dd>
-                    </dl>
-                    <dl>
-                        <dt>작성일</dt>
-                        <dd>2024.02.13</dd>
-                    </dl>
-                    <dl>
-                        <dt>조회수</dt>
-                        <dd>12</dd>
-                    </dl>
-                </div>
-
-                <!-- 글 내용 -->
-                <div class="cont">
-                    글 내용입니다.
-                </div>
-            </div>
-
-            <!-- 버튼 표시 영역 -->
-            <div class="bt_wrap">
-                <a href="./list.html">목록</a>
-                <a href="./edit.html">수정</a>
-            </div>
+        <!-- 버튼 표시 영역 -->
+        <div class="bt_wrap">
+          <a href="./list.html">목록</a>
+          <a href="#" onclick="fnMoveModify();">수정</a>
         </div>
-
+      </div>
     </div>
-</body>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
+    <script>
+      //현재 웹페이지의 주소에서 전달되는 쿼리스트링 키의 값을 추출하는 함수정의
+      function getQueryString(keyName) {
+        var results = new RegExp("[\?&]" + keyName + "=([^&#]*)").exec(
+          window.location.href
+        );
+        return results[1] || 0;
+      }
+
+      //수정페이지 이동처리 함수
+      function fnMoveModify() {
+        location.href = "./edit.html?aidx=" + articleIdx;
+      }
+
+      //URL에서 전달된 게시글 고유키값 조회하기
+      var articleIdx = getQueryString("aidx");
+
+      $(document).ready(function () {
+        $.get(
+          "http://localhost:3000/api/article?idx=" + articleIdx,
+          function (article) {
+            console.log("백엔드에서 조회한 단일게시글 데이터 출력: ", article);
+          }
+        );
+
+        $("#idx").text(article.ArticleIDX);
+        $("#title").text(article.Title);
+        $("#writer").text(article.RegistUserID);
+        $("#registdate").text(article.RegistDate);
+        $("#viewcount").text(article.ViewCount);
+        $("#contents").html(article.Contents);
+      });
+    </script>
+  </body>
 </html>
