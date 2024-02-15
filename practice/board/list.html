@@ -15,7 +15,7 @@
         <!-- 게시글 목록 영역 -->
         <div class="board_list_wrap">
             <!-- 게시글 목록 표시 -->
-            <div class="board_list">
+            <div class="board_list" id="list">
                 <!-- 게시글 캡션-제목 표시 -->
                 <div class="top">
                     <div class="num">번호</div>
@@ -26,13 +26,13 @@
                 </div>
 
                 <!-- 게시글 데이터 표시 -->
-                <div>
+                <!-- <div>
                     <div class="num">1</div>
                     <div class="title">게시글1</div>
                     <div class="writer">사용자1</div>
                     <div class="date">2024.02.13</div>
                     <div class="count">12</div>
-                </div>
+                </div> -->
 
             </div>
             <!-- 게시글 페이지 표시 -->
@@ -54,5 +54,23 @@
         </div>
     </div>
     
+    <script>
+        $(document).ready(function(){
+            $.get("http://localhost3000:/api/articles", function(data){
+                console.log("backend Data: ",data);
+
+                $.each(data,function(index,rowData){
+                    var articleDiv = `<div>
+                    <div class="num">1</div>
+                    <div class="title">게시글1</div>
+                    <div class="writer">사용자1</div>
+                    <div class="date">2024.02.13</div>
+                    <div class="count">12</div>
+                </div>`
+                })
+
+            })
+        })
+    </script>
 </body>
 </html>
