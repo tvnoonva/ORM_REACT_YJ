@@ -27,3 +27,7 @@ button:active {
   background-color: white;
   color: blacks;
 }
+
+table button {
+  background-color: cadetblue;
+}

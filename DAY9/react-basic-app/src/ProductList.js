@@ -32,13 +32,13 @@ const ProductList = () => {
   });
 
   //제품 고유번호 생성 상태값 정의하기
-  const [productId, setProductId] = useState(5);
+  const [productId, setProductId] = useState(20);
 
   const handleProduct = (e) => {
     setProduct({
       ...product,
       [e.target.name]: e.target.value,
-      id: setProductId((productId) => productId + 1),
+      id: setProductId(products.length + 1),
     });
   };
 
@@ -55,6 +55,10 @@ const ProductList = () => {
       (p) => p.productName !== pro.productName
     );
     setProducts(filerProducts);
+  };
+
+  const handleInit = () => {
+    setProducts([]);
   };
 
   return (
@@ -105,6 +109,8 @@ const ProductList = () => {
           ))}
         </tbody>
       </table>
+      <hr></hr>
+      <button onClick={handleInit}>모두지우기</button>
     </div>
   );
 };
