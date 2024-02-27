@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const GNB = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light fixed-top">
+    <nav className="navbar navbar-expand-lg navbar-light">
       <div className="container">
         <Link className="navbar-brand" to="/">
           Home
@@ -19,6 +19,11 @@ const GNB = () => {
             <li className="nav-item">
               <Link className="nav-link" to="/signup">
                 Sign up
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/article/list">
+                Article
               </Link>
             </li>
           </ul>
