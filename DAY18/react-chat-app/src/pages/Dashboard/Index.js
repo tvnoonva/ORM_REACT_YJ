@@ -940,11 +940,11 @@ const Index = (props) => {
 //리덕스 스토어에 저장된 전역상태값중 특정 전역상태값을 현재 컴포넌트의 props에 추가해준다.
 //추가된 props나 전역상태데이터 속성을 통해 useSelector hook을 사용하지 않고도 전역데이터를 호출해서 사용가능하다.
 const mapStateToProps = (state) => {
-  return {
-    ...state.Layout,
-  };
+  const { users } = state.Chat;
+  return { users };
 };
 
 // export default Index;
 // connect(mapStateToProps, mapDispatchToProps)(현재 컴포넌트 지정)
-export default connect(mapStateToProps, { setActiveTab })(Index);
+// setActiveTab: dispatch hook 기능을 하는 액션 함수, props.setActiveTab으로 접근해서 사용 가능
+export default connect(mapStateToProps, {})(Index);

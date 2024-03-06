@@ -74,7 +74,7 @@ const Login = (props) => {
       if (res.data.code == "200") {
         window.localStorage.setItem("jwttoken", res.data.data.token);
       } else {
-        setValidationText("User not found");
+        setValidationText(res.data.result);
         setModal(true);
         return false;
       }
