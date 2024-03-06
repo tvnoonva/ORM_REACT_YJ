@@ -1,6 +1,7 @@
 import { SET_ACTIVE_TAB } from "../../constants/actionTypes";
 
 //레이아웃 전역상태값 구조 정의 및 초기값 세팅
+//sidemenubar에서 props로 접근 가능
 const INIT_STATE = {
   activeTab: "chat", //좌측 매뉴얼 선택정보
   userSidebar: false, //우측 채팅대상자의 프로필정보 표시여부

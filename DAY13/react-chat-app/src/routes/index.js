@@ -12,7 +12,7 @@ import AuthLayout from "../layouts/AuthLayout";
 //로그인 여부 체크 후 미로그인시 로그인 페이지 redirect
 const AuthProtected = (props) => {
   //인증에서 보호중인 페이지 접근 혹은 jtw 토큰 미확인시
-  if (props.isAuthProtected && !localStorage.getItem("authUser")) {
+  if (props.isAuthProtected && !localStorage.getItem("jwttoken")) {
     return (
       <Navigate to={{ pathname: "/login", state: { from: props.location } }} />
     );

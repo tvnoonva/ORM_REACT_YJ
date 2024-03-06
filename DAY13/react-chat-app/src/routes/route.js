@@ -10,7 +10,7 @@ const StarterPage = React.lazy(() => import("../pages/starter/index"));
 const Dashboard = React.lazy(() => import("../pages/dashboard/index"));
 
 //auth불필요
-const Login = React.lazy(() => import("../pages/auth/Login"));
+const Login = React.lazy(() => import("../pages/auth/LoginAsync"));
 const Register = React.lazy(() => import("../pages/auth/Register"));
 
 //인증 필요한 라우팅 목록

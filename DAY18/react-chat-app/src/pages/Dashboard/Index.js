@@ -927,9 +927,8 @@ const Index = (props) => {
   return (
     <React.Fragment>
       {/* 현재 사용자의 최근 채팅대상자 목록 표시 영역 */}
-      <ChatLeftSidebar recentChatList={globalData.users} />
+      <ChatLeftSidebar recentChatList={globalData.users} /> {/*임시data*/}
       {/* <ChatLeftSidebar recentChatList={props.users} /> */}
-
       {/* 채팅대상자 목록에서 현재 사용자가 선택한 단일 채팅방에 대한 실제 채팅화면영역 */}
       <UserChat recentChatList={globalData.users} active_user={3} />
       {/* <UserChat recentChatList={props.users} /> */}
@@ -937,9 +936,15 @@ const Index = (props) => {
   );
 };
 
+//store로부터 state를 가져와서 컴포넌트의 props로 보내게 해준다.
+//리덕스 스토어에 저장된 전역상태값중 특정 전역상태값을 현재 컴포넌트의 props에 추가해준다.
+//추가된 props나 전역상태데이터 속성을 통해 useSelector hook을 사용하지 않고도 전역데이터를 호출해서 사용가능하다.
 const mapStateToProps = (state) => {
-  const { users } = state.Chat;
-  return { users };
+  return {
+    ...state.Layout,
+  };
 };
 
-export default Index;
+// export default Index;
+// connect(mapStateToProps, mapDispatchToProps)(현재 컴포넌트 지정)
+export default connect(mapStateToProps, { setActiveTab })(Index);

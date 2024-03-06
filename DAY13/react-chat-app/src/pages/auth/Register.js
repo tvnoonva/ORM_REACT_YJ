@@ -24,6 +24,8 @@ import {
 import logodark from "../../assets/images/logo-dark.png";
 import logolight from "../../assets/images/logo-light.png";
 
+import axios from "axios";
+
 const Register = () => {
   const navigate = useNavigate();
 
@@ -43,6 +45,23 @@ const Register = () => {
     }),
     onSubmit: (values) => {
       //props.loginUser(values.email, values.password, props.router.navigate);
+
+      var memberData = {
+        email: values.email,
+        name: values.username,
+        password: values.password,
+      };
+
+      axios
+        .post("http://localhost:3005/api/member/entry", memberData)
+        .then((res) => {
+          console.log("회원가입 처리 결과 반환값:", res.data);
+
+          navigate("/login");
+        })
+        .catch((err) => {
+          console.log("에러발생:", err);
+        });
     },
   });
 
