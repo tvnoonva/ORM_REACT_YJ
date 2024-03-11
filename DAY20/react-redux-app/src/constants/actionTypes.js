@@ -9,3 +9,9 @@ export const USER_LOGIN = "USER_LOGIN";
 
 //테마 색상 변경시 사용하는 전역 관리 데이터
 export const THEME_COLOR = "THEME_COLOR";
+
+//API호출 에러 액션타입
+export const API_FAILED = "API_FAILED";
+
+//SAGA기반 로그인 처리 액션타입
+export const LOGIN_USER = "LOGIN_USER";

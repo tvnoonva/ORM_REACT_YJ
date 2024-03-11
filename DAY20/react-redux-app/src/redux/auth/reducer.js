@@ -1,5 +1,5 @@
 //step1: 관련된 액션 타입 참조
-import { USER_LOGIN } from "../../constants/actionTypes";
+import { USER_LOGIN, LOGIN_USER } from "../../constants/actionTypes";
 
 //step2: 전역데이터 저장소(store)에 생성할 기본 전역데이터 구조를 정의하고 초기값 정의
 const INIT_STATE = {
