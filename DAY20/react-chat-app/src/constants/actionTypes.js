@@ -10,3 +10,15 @@ export const OPEN_USER_PROFILE_SIDEBAR = "OPEN_USER_PROFILE_SIDEBAR";
 
 //테마설정
 export const SET_LAYOUT_MODE = "SET_LAYOUT_MODE";
+
+//--------------------------
+//채팅 관련 액션 타입
+
+//서버소켓 메시지 전송시 전역에 전송한 메시지 데이터 저장
+export const CHAT_SEND_MSG = "CHAT_SEND_MSG";
+
+//서버소켓 메시지 수신시 전역에 메시지 데이터 저장
+export const CHAT_RECEIVE_MSG = "CHAT_RECEIVE_MSG";
+
+//내 채널목록에서 해당 채팅방 채널 접속 및 최신메시지 출력
+export const CHAT_CURRENT_CHANNEL = "CHAT_CURRENT_CHANNEL";

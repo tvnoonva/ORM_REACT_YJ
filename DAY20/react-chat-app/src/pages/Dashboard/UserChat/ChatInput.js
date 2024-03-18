@@ -12,6 +12,9 @@ import {
   Form,
 } from "reactstrap";
 
+import { connect } from "react-redux";
+import { setSendMessage } from "../../../redux/actions";
+
 //yarn add emoji-picker-react
 import EmojiPicker from "emoji-picker-react";
 
@@ -181,4 +184,12 @@ const ChatInput = (props) => {
   );
 };
 
-export default ChatInput;
+const mapStateToProps = (state) => {
+  // const { active_user } = state.Chat;
+  const { sendMessage, currentChannel } = state.Chat;
+  const { token, loginUser } = state.Auth;
+  return { sendMessage, currentChannel, token, loginUser };
+};
+
+// export default ChatInput;
+export default connect(mapStateToProps, { setSendMessage })(ChatInput);
